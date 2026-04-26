@@ -1,0 +1,23 @@
+{
+  "name": "d3p1/lib-php-template",
+  "description": "A template to build PHP libraries",
+  "license": [
+    "MIT"
+  ],
+  "homepage": "https://www.d3p1.dev",
+  "authors": [
+    {
+      "name": "C. M. de Picciotto",
+      "email": "d3p1@d3p1.dev",
+      "homepage": "https://www.d3p1.dev"
+    }
+  ],
+  "require": {
+    "php": "^8.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "D3p1\\LibPhpTemplate\\": "src"
+    }
+  }
+}
