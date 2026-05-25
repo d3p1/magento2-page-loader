@@ -1,0 +1,62 @@
+<?php
+/**
+ * @description Page loader
+ * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
+ */
+?>
+
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+
+<?php
+/**
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+
+<div id="page_loader">
+    <span class="page-loader"></span>
+</div>
+
+<?php
+/**
+ * @note Add loader logic as a vanilla JavaScript
+ * @note The page loader needs to access document ready state to be able
+ *       to know when to show and hide the loader. Since requirejs works
+ *       by loading the code asynchronously, it is not possible to work
+ *       with it to do the respective treatment since it is not possible
+ *       to work with defined states asynchronously (for example,
+ *       it may happen that when our asynchronous logic finishes loading,
+ *       the expected states have already occurred)
+ * @link https://javascript.info/onload-ondomcontentloaded
+ */
+?>
+<?php
+$scriptString = <<<script
+/**
+ * @note Loading
+ * @note It is created two states defined by the 
+ *       classes 'page-state-loading' (loading in progress) 
+ *       and 'page-state-complete' (loading complete) that style the loader
+ * @note It is added a little delay before complete the loading state, 
+ *       just to ensure that the page is correctly loaded
+ */
+document.body.classList.add('page-state-loading');
+document.addEventListener('readystatechange', function () {
+    if (document.readyState === 'complete') {
+        setTimeout(() => {
+            document.body.classList.add('page-state-complete');
+        }, 4000);
+    }
+});
+script;
+?>
+<?= /* @noEscape */ $secureRenderer->renderTag(
+    'script',
+    [],
+    $scriptString,
+    false
+) ?>

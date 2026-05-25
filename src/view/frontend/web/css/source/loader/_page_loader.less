@@ -1,0 +1,106 @@
+/**
+ * @description Page loader styles
+ * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
+ * @link        https://cssloaders.github.io/
+ */
+& when (@media-common = true) {
+    /**
+     * @note Page loader
+     * @note By default, the page loader is visible,
+     *       full size and in front of other elements
+     */
+
+    #page_loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: @color-black;
+        z-index: 999999999999;
+
+        .page-loader {
+            width: 48px;
+            height: 48px;
+            display: inline-block;
+            position: relative;
+            transform: rotate(45deg);
+
+            &::before {
+                content: '';
+                box-sizing: border-box;
+                width: 24px;
+                height: 24px;
+                position: absolute;
+                left: 0;
+                top: -24px;
+                animation: before-anim-loader 4s ease infinite;
+            }
+
+            &::after {
+                content: '';
+                box-sizing: border-box;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 24px;
+                height: 24px;
+                background: rgba(255, 255, 255, 0.85);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+                animation: after-anim-loader 2s ease infinite;
+            }
+        }
+    }
+
+    @keyframes before-anim-loader {
+        0% {
+            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);
+        }
+        12% {
+            box-shadow: 0 24px white, 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);
+        }
+        25% {
+            box-shadow: 0 24px white, 24px 24px white, 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);
+        }
+        37% {
+            box-shadow: 0 24px white, 24px 24px white, 24px 48px white, 0 48px rgba(255, 255, 255, 0);
+        }
+        50% {
+            box-shadow: 0 24px white, 24px 24px white, 24px 48px white, 0 48px white;
+        }
+        62% {
+            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px white, 24px 48px white, 0 48px white;
+        }
+        75% {
+            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px white, 0 48px white;
+        }
+        87% {
+            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px white;
+        }
+        100% {
+            box-shadow: 0 24px rgba(255, 255, 255, 0), 24px 24px rgba(255, 255, 255, 0), 24px 48px rgba(255, 255, 255, 0), 0 48px rgba(255, 255, 255, 0);
+        }
+    }
+
+    @keyframes after-anim-loader {
+        0% {
+            transform: translate(0, 0) rotateX(0) rotateY(0);
+        }
+        25% {
+            transform: translate(100%, 0) rotateX(0) rotateY(180deg);
+        }
+        50% {
+            transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
+        }
+        75% {
+            transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+        }
+        100% {
+            transform: translate(0, 0) rotateX(0) rotateY(360deg);
+        }
+    }
+}
+
+@import 'state/_loading.less';
+@import 'state/_complete.less';

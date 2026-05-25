@@ -1,0 +1,16 @@
+/**
+ * @description Page loader complete state styles
+ * @author      C. M. de Picciotto <d3p1@d3p1.dev> (https://d3p1.dev/)
+ */
+& when (@media-common = true) {
+    body.page-state-complete {
+        overflow: visible;
+
+        #page_loader {
+            transition: all 0.6s ease;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 1;
+        }
+    }
+}
