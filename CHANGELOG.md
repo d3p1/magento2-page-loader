@@ -1,3 +1,10 @@
+# 1.0.0 (2026-05-25)
+
+
+### Features
+
+* init [[#1](https://github.com/d3p1/magento2-page-loader/issues/1)] ([14915fd](https://github.com/d3p1/magento2-page-loader/commit/14915fdd50bd7fe62abef6ce53693a8dd36ae127))
+
 # 1.0.0 (2026-04-22)
 
 
